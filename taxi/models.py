@@ -23,6 +23,7 @@ class Driver(AbstractUser):
     class Meta:
         ordering = ["id"]
 
+
 class Car(models.Model):
     model = models.CharField(max_length=255)
     manufacturer = models.ForeignKey(
