@@ -11,7 +11,7 @@ class Manufacturer(models.Model):
         return self.name
 
     class Meta:
-        ordering = ["name"]
+        ordering = ["id"]
 
 
 class Driver(AbstractUser):
@@ -21,7 +21,7 @@ class Driver(AbstractUser):
         return reverse("taxi:driver-detail", kwargs={"pk": self.pk})
 
     class Meta:
-        ordering = ["username"]
+        ordering = ["id"]
 
 class Car(models.Model):
     model = models.CharField(max_length=255)
@@ -34,4 +34,4 @@ class Car(models.Model):
         return reverse("taxi:car-detail", kwargs={"pk": self.pk})
 
     class Meta:
-        ordering = ["model"]
+        ordering = ["id"]
