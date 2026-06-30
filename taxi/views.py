@@ -34,14 +34,15 @@ class CarDetailView(DetailView):
     model = Car
 
     def get_queryset(self):
-        return Car.objects.select_related("manufacturer").prefetch_related("drivers")
-
+        return (Car.objects.select_related("manufacturer")
+                .prefetch_related("drivers"))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["drivers"] = self.object.drivers.all()
 
         return context
+
 
 class DriverListView(ListView):
     model = Driver
@@ -51,7 +52,6 @@ class DriverListView(ListView):
 class DriverDetailView(DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars").all()
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
