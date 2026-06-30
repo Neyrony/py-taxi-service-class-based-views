@@ -2,12 +2,18 @@
 
 {% block content %}
     <h3>All cars of {{ driver.first_name }} {{ driver.last_name }}</h3>
-      {% if cars %}
-      <ul>
+    {% if cars %}
+      <table class="table">
+        <tr>
+          <th>Model</th>
+        </tr>
         {% for car in cars %}
-          <li>{{ car.model }}</li>
+          <tr>
+            <td>{{ car.model }}</td>
+          </tr>
         {% endfor %}
-      </ul>
+
+      </table>
     {% else %}
       <p>There are no cars</p>
     {% endif %}

@@ -2,17 +2,22 @@
 
 {% block content %}
   <h3>Car Info</h3>
-  <p>Car Manufacturer: {{ car.manufacturer }}</p>
+  <p>Car Manufacturer: {{ car.manufacturer.name }} from {{ car.manufacturer.country }}</p>
 
-  {% if car.drivers.all %}
-    <h3>All drivers:</h3>
-    <ul>
-      {% for driver in car.drivers.all %}
-        <li>
-          {{ driver.first_name }} {{ driver.last_name }}
-        </li>
+  {% if drivers %}
+    <h3>All car drivers:</h3>
+    <table class="table">
+      <tr>
+        <th>id</th>
+        <th>username</th>
+      </tr>
+      {% for driver in drivers %}
+        <tr>
+          <td>{{ driver.id }}</td>
+          <td>{{ driver.username }}</td>
+        </tr>
       {% endfor %}
-    </ul>
+    </table>
   {% else %}
     <p>There are no driver</p>
   {% endif %}

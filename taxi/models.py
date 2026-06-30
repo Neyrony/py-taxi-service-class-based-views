@@ -11,7 +11,7 @@ class Manufacturer(models.Model):
         return self.name
 
     class Meta:
-        ordering = ["id"]
+        ordering = ["name"]
 
 
 class Driver(AbstractUser):
@@ -21,7 +21,7 @@ class Driver(AbstractUser):
         return reverse("taxi:driver-detail", kwargs={"pk": self.pk})
 
     class Meta:
-        ordering = ["id"]
+        ordering = ["username"]
 
 
 class Car(models.Model):
@@ -35,4 +35,4 @@ class Car(models.Model):
         return reverse("taxi:car-detail", kwargs={"pk": self.pk})
 
     class Meta:
-        ordering = ["id"]
+        ordering = ["model"]
